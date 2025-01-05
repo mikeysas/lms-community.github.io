@@ -1,6 +1,6 @@
 ---
 layout: default
-title: New Music menu changes in 9.0
+title: New Music changes in 9.0
 ---
 
 # New Music borwsing changes in 9.0

@@ -17,3 +17,13 @@ Selecting browse by New Music will display a list of albums sorted by the actual
 There is addiotnal borwsing option for Recently Updated Albums in 9.0 that will display a list of albums sorted by the file modified timestamp. This is a more accurate description for how the New Music browsing behaved prior to release 9.0. If you prefer to see a list of albums sorted by file modified date like the New Muisc browsing previous to 9.0, then you shoudl use Recently Updated Albums borwsing menu.
 
 You can add this menu for each player via settings > Player > Additional Browse Modes.
+
+!!! note
+        If you do not see Additional Browse Modes as an option then you need to install the Additional Browse Modes plugin via the Plugin Manager.
+
+![Add Browse Mode](assets/new-music/add-browse-modes.png){ align=left }
+
+This setting will apply for all of the UI skins other than Material and all 3rd party apps like iPeng, Squeezer, and Orange Squeeze.
+
+The Material UI has its own settings for displaying Brownse Menus under My Music that will apply for all players being controled by the Material UI regardless of the per player setting above.  You can update this setting by using the hamberger button in the top left to open the Navigation Drawer and selecting Interface Settings near the bottom. Scroll down and click the cog next to My Music
+

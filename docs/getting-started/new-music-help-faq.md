@@ -43,6 +43,16 @@ The changes in 9.0 were to correct this long standing problem by finally having 
 #### Why couldn't you just leave New Music as it has been for so long and create a new browse mode for the new thing?
 Change is hard when you have become accustom to something, but can you imagine how confusing it would be to explain to a new user who did not have this history.  New Music needs to be the name for a list Music sorted by when it was added to the loibrary and Recently Updated is the best name that was decided upon for the list sorted by file modified date.
 
+#### Why do I see New Album at the top of both New Music and Recently Updated Albums?
+Technically speaking neither of these queries use a means to know if an album existed in the library prior to the date and timestamp they sort by: 
+- __New Music__ is a list of your albums sorted on the date added field in your persist.db which represents when you added the music to your LMS library
+- __Recently Updated__ is a list of your albums sorted on the file modified timestamp (as stored in library.db)
+
+So that means the following are all true:
+- If you rip a new CD today and run scan for new and changed, that CD will be at the top of both the New Music and Recently Updated lists
+- If you modify the tags on an album that has already been scanned in to your library without preserving the modified timestamp, this album will sort to the top of your Recently Updated, but will not change positions on the New Music list after a scan
+- If you modify the tags on an album that has already been scanned in to your library and preserve the modified timestamp, this album will stay in the same position on both lists after a Clear & Rescan All
+
 #### How do I fix my New Music list which looks completely wrong?
 You can reset your New Music list to be based on File Modfied dates for all of your existing music by starting over with a fresh persist.db.  This wil be a one time reset for just your existing music. All subsequent additions to your music library will be sorted based on the timestamp they were first scanned into your Lytion library and any changes to file modified dates will not be relected in the New Music list.
 
@@ -50,11 +60,11 @@ You can reset your New Music list to be based on File Modfied dates for all of y
         Please be aware that starting with a fresh persist.db means you will lose play history stats (counts and last played date) and ratings. If you are using the Ratings Light plugin, ratings can be backed up and restored after you reset your persist.db. The same is true for the Alternative play history stats if you use the Alternative Play Count plugin.
 
 Steps to reset your persisti.db (Did you read the Note above first?):
-- Stop your Lyrion Server
-- Backup your persist.db (persit.db* from your Prefs directory) and library.db (library.db* from your Cache directory). There may be 3 files for each. You will want to have those backups if you are not happy with the results of this process or did not read the note above.
-- Delete persit.db* from your Prefs directory and library.db* from your Cache directory 
-- Upgrade to the latest 9.0.1 if you are not on that release or later.
-- Start Lyrion and it should begin a new scan (if not go ahead and initiate a Clear Library and Rescan All)
+1. Stop your Lyrion Server
+2. Backup your persist.db (persit.db* from your Prefs directory) and library.db (library.db* from your Cache directory). There may be 3 files for each. You will want to have those backups if you are not happy with the results of this process or did not read the note above.
+3. Delete persit.db* from your Prefs directory and library.db* from your Cache directory 
+4. Upgrade to the latest 9.0.1 if you are not on that release or later.
+5. Start Lyrion and it should begin a new scan (if not go ahead and initiate a Clear Library and Rescan All)
 
 #### Why is my New Music list in reverse alphabetical order
 You probably started with a fresh persist.db when you upgraded to 9.0. The initial release of 9.0 did not accomadate this situation and as a result you are seeing a list of albums based on the order they were scanned with the last album scanned at the top of the list.  As noted above a change was made in 9.0.1 to accomadate this by loading the file modified date as date added for the first scan of a fresh persist.db. You can follow the steps above for How do I fix my New Music List to upgrade to 9.0.1 and reset your persist.db.
